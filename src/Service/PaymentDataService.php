@@ -9,6 +9,7 @@
 namespace App\Service;
 
 
+use App\Entity\Payment;
 use App\Repository\PaymentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -40,14 +41,23 @@ class PaymentDataService
     $this->paymentRepository = $paymentRepository;
   }
 
-  public function getAndSavePayments(int $limit = 10, int $offset = 0)
+  /**
+   * @param int $limit
+   * @param int $offset
+   *
+   * @return Payment[]
+   * @throws \Doctrine\ORM\ORMException
+   * @throws \Doctrine\ORM\OptimisticLockException
+   */
+  public function getAndSavePayments(int $limit = 10, int $offset = 0): array
   {
     $payments = $this->api->getDataSet(PaymentDataApiService::DATA_SET_2015, $limit, $offset);
+    $updatedPayments = [];
 
     foreach ($payments as $payment) {
-      $this->entityManager->persist($payment);
+      $updatedPayments[] = $this->paymentRepository->updateOrInsertPayment($payment);
     }
 
-    $this->entityManager->flush();
+    return $updatedPayments;
   }
 }
