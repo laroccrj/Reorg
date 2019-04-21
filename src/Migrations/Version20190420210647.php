@@ -68,7 +68,7 @@ final class Version20190420210647 extends AbstractMigration
             name_of_third_party_entity_receiving_payment_or_transfer_of_val VARCHAR(255) DEFAULT NULL, 
             charity_indicator VARCHAR(255) DEFAULT NULL, 
             third_party_equals_covered_recipient_indicator VARCHAR(255) DEFAULT NULL, 
-            contextual_information VARCHAR(255) DEFAULT NULL, 
+            contextual_information LONGTEXT DEFAULT NULL, 
             delay_in_publication_indicator VARCHAR(255) DEFAULT NULL, 
             record_id INT NOT NULL, 
             dispute_status_for_publication VARCHAR(255) DEFAULT NULL, 

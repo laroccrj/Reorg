@@ -24,21 +24,28 @@ class PaymentDataService
   /** @var EntityManagerInterface */
   private $entityManager;
 
+  /** @var PaymentDataIndexService */
+  private $paymentDataIndexService;
+
   /**
    * PaymentDataService constructor.
    *
    * @param PaymentDataApiService $api
    * @param EntityManagerInterface $entityManager
    * @param PaymentRepository $paymentRepository
+   * @param PaymentDataIndexService $paymentDataIndexService
    */
   public function __construct(
     PaymentDataApiService $api,
     EntityManagerInterface $entityManager,
-    PaymentRepository $paymentRepository)
+    PaymentRepository $paymentRepository,
+    PaymentDataIndexService $paymentDataIndexService
+  )
   {
     $this->api = $api;
     $this->entityManager = $entityManager;
     $this->paymentRepository = $paymentRepository;
+    $this->paymentDataIndexService = $paymentDataIndexService;
   }
 
   /**
@@ -59,5 +66,22 @@ class PaymentDataService
     }
 
     return $updatedPayments;
+  }
+
+  /**
+   * @param int $limit
+   * @param int $offset
+   *
+   * @return Payment[]
+   */
+  public function getPayments(int $limit = 100, int $offset = 0): array
+  {
+    return $this->paymentRepository->findBy([], null, $limit, $offset);
+  }
+
+  public function searchPayments($query = [], $limit = 50, $offset = 0)
+  {
+    $paymentIds = $this->paymentDataIndexService->search($query, $limit, $offset);
+    return $this->paymentRepository->findBy(['id' => $paymentIds]);
   }
 }

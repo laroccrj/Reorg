@@ -33,11 +33,50 @@ class PaymentRepository extends ServiceEntityRepository
 
       if (!is_null($existing)) {
         $existing = EntityUtils::copyEntity($existing, $payment);
+        $payment = $existing;
       }
 
-      $this->_em->persist($existing);
-      $this->_em->flush($existing);
+      $date = new \DateTime();
+      $payment->setLastUpdateTime($date->getTimestamp());
+      $this->_em->persist($payment);
+      $this->_em->flush($payment);
 
+      return $payment;
+    }
+
+  /**
+   * @param int $limit
+   * @param int $offset
+   *
+   * @return array
+   */
+    public function findPaymentsThatNeedToBeIndexed(int $limit = 100, int $offset = 0)
+    {
+      $result = $this->createQueryBuilder('p')
+        ->select('p.id')
+        ->where('p.last_index_time IS NULL')
+        ->orWhere('p.last_index_time < p.last_update_time')
+        ->setMaxResults($limit)
+        ->setFirstResult($offset)
+        ->getQuery()
+        ->getResult();
+
+      return array_column($result, "id");
+    }
+
+  /**
+   * @param Payment $payment
+   *
+   * @return Payment
+   * @throws \Doctrine\ORM\ORMException
+   * @throws \Doctrine\ORM\OptimisticLockException
+   */
+    public function markPaymentIndexed(Payment $payment)
+    {
+      $date = new \DateTime();
+      $payment->setLastIndexTime($date->getTimestamp());
+      $this->_em->persist($payment);
+      $this->_em->flush($payment);
       return $payment;
     }
 }

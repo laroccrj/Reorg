@@ -1,0 +1,21 @@
+body {
+    background-color: lightgray;
+}
+table {
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.fieldCol {
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+.typeaheadItem {
+    background-color: white;
+    border: 1px solid black;
+}

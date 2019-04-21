@@ -20,327 +20,337 @@ class Payment
   /**
    * @ORM\Column(type="string", length=63, nullable=true)
    */
-  private $change_type;
+  public $change_type;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $covered_recipient_type;
+  public $covered_recipient_type;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $teaching_hospital_ccn;
+  public $teaching_hospital_ccn;
 
   /**
    * @ORM\Column(type="integer", nullable=true)
    */
-  private $teaching_hospital_id;
+  public $teaching_hospital_id;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $teaching_hospital_name;
+  public $teaching_hospital_name;
 
   /**
    * @ORM\Column(type="integer", nullable=true)
    */
-  private $physician_profile_id;
+  public $physician_profile_id;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_first_name;
+  public $physician_first_name;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_middle_name;
+  public $physician_middle_name;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_last_name;
+  public $physician_last_name;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_name_suffix;
+  public $physician_name_suffix;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_primary_business_street_address_line1;
+  public $recipient_primary_business_street_address_line1;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_primary_business_street_address_line2;
+  public $recipient_primary_business_street_address_line2;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_city;
+  public $recipient_city;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_state;
+  public $recipient_state;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_zip_code;
+  public $recipient_zip_code;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_country;
+  public $recipient_country;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_province;
+  public $recipient_province;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $recipient_postal_code;
+  public $recipient_postal_code;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_primary_type;
+  public $physician_primary_type;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_specialty;
+  public $physician_specialty;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_license_state_code1;
+  public $physician_license_state_code1;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_license_state_code2;
+  public $physician_license_state_code2;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_license_state_code3;
+  public $physician_license_state_code3;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_license_state_code4;
+  public $physician_license_state_code4;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_license_state_code5;
+  public $physician_license_state_code5;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $submitting_applicable_manufacturer_or_applicable_gpo_name;
+  public $submitting_applicable_manufacturer_or_applicable_gpo_name;
 
   /**
    * @ORM\Column(type="float", nullable=true)
    */
-  private $applicable_manufacturer_or_applicable_gpo_making_payment_id;
+  public $applicable_manufacturer_or_applicable_gpo_making_payment_id;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $applicable_manufacturer_or_applicable_gpo_making_payment_name;
+  public $applicable_manufacturer_or_applicable_gpo_making_payment_name;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $applicable_manufacturer_or_applicable_gpo_making_payment_state;
+  public $applicable_manufacturer_or_applicable_gpo_making_payment_state;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $applicable_manufacturer_or_applicable_gpo_making_payment_country;
+  public $applicable_manufacturer_or_applicable_gpo_making_payment_country;
 
   /**
    * @ORM\Column(type="float", nullable=true)
    */
-  private $total_amount_of_payment_usdollars;
+  public $total_amount_of_payment_usdollars;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $date_of_payment;
+  public $date_of_payment;
 
   /**
    * @ORM\Column(type="integer", nullable=true)
    */
-  private $number_of_payments_included_in_total_amount;
+  public $number_of_payments_included_in_total_amount;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $form_of_payment_or_transfer_of_value;
+  public $form_of_payment_or_transfer_of_value;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $nature_of_payment_or_transfer_of_value;
+  public $nature_of_payment_or_transfer_of_value;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $city_of_travel;
+  public $city_of_travel;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $state_of_travel;
+  public $state_of_travel;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $country_of_travel;
+  public $country_of_travel;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $physician_ownership_indicator;
+  public $physician_ownership_indicator;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $third_party_payment_recipient_indicator;
+  public $third_party_payment_recipient_indicator;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_third_party_entity_receiving_payment_or_transfer_of_val;
+  public $name_of_third_party_entity_receiving_payment_or_transfer_of_val;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $charity_indicator;
+  public $charity_indicator;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $third_party_equals_covered_recipient_indicator;
+  public $third_party_equals_covered_recipient_indicator;
+
+  /**
+   * @ORM\Column(type="text", nullable=true)
+   */
+  public $contextual_information;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $contextual_information;
-
-  /**
-   * @ORM\Column(type="string", length=255, nullable=true)
-   */
-  private $delay_in_publication_indicator;
+  public $delay_in_publication_indicator;
 
   /**
    * @ORM\Column(type="integer", unique=true)
    */
-  private $record_id;
+  public $record_id;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $dispute_status_for_publication;
+  public $dispute_status_for_publication;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $product_indicator;
+  public $product_indicator;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_drug_or_biological1;
+  public $name_of_associated_covered_drug_or_biological1;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_drug_or_biological2;
+  public $name_of_associated_covered_drug_or_biological2;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_drug_or_biological3;
+  public $name_of_associated_covered_drug_or_biological3;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_drug_or_biological4;
+  public $name_of_associated_covered_drug_or_biological4;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_drug_or_biological5;
+  public $name_of_associated_covered_drug_or_biological5;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $ndc_of_associated_covered_drug_or_biological1;
+  public $ndc_of_associated_covered_drug_or_biological1;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $ndc_of_associated_covered_drug_or_biological2;
+  public $ndc_of_associated_covered_drug_or_biological2;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $ndc_of_associated_covered_drug_or_biological3;
+  public $ndc_of_associated_covered_drug_or_biological3;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $ndc_of_associated_covered_drug_or_biological4;
+  public $ndc_of_associated_covered_drug_or_biological4;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $ndc_of_associated_covered_drug_or_biological5;
+  public $ndc_of_associated_covered_drug_or_biological5;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_device_or_medical_supply1;
+  public $name_of_associated_covered_device_or_medical_supply1;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_device_or_medical_supply2;
+  public $name_of_associated_covered_device_or_medical_supply2;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_device_or_medical_supply3;
+  public $name_of_associated_covered_device_or_medical_supply3;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_device_or_medical_supply4;
+  public $name_of_associated_covered_device_or_medical_supply4;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $name_of_associated_covered_device_or_medical_supply5;
+  public $name_of_associated_covered_device_or_medical_supply5;
 
   /**
    * @ORM\Column(type="integer", nullable=true)
    */
-  private $program_year;
+  public $program_year;
 
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
-  private $payment_publication_date;
+  public $payment_publication_date;
+
+  /**
+   * @ORM\Column(type="integer", length=12,)
+   */
+  private $last_update_time;
+
+  /**
+   * @ORM\Column(type="integer", length=12, nullable=true)
+   */
+  private $last_index_time;
 
   public function getId(): ?int
   {
@@ -1136,5 +1146,63 @@ class Payment
     $this->payment_publication_date = $payment_publication_date;
 
     return $this;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getLastUpdateTime(): ?int
+  {
+    return $this->last_update_time;
+  }
+
+  /**
+   * @param int $last_update_time
+   *
+   * @return Payment
+   */
+  public function setLastUpdateTime(int $last_update_time): self
+  {
+    $this->last_update_time = $last_update_time;
+    return $this;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getLastIndexTime(): ?int
+  {
+    return $this->last_index_time;
+  }
+
+  /**
+   * @param int $last_index_time
+   *
+   * @return Payment
+   */
+  public function setLastIndexTime(?int $last_index_time): self
+  {
+    $this->last_index_time = $last_index_time;
+    return $this;
+  }
+
+  /**
+   * Hacky but saving me time
+   *
+   * @return array
+   */
+  public function getAttributes(): array
+  {
+    return get_object_vars($this);
+  }
+
+  public static function getPublicAttributes(): array
+  {
+    $payment = new Payment();
+    $attributes = get_object_vars($payment);
+    unset($attributes['id']);
+    unset($attributes['last_update_time']);
+    unset($attributes['last_index_time']);
+    return $attributes;
   }
 }
