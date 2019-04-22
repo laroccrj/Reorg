@@ -25,7 +25,8 @@ Run `yarn run encore dev` to generate js and css assets
 ## Getting data scripts
 Run `php bin/console app:get-payments 1000` to get payments from the external API. 
 The first argument is the amount of records you want to pull from the API. I put a limit on this so I didn't have to wait for downloads when deving
-You can add a second argument for batch size there incase you are loading a lot of records
+
+You can also add a second argument for batch size there incase you are loading a lot of records and want to avoid throttling: `php bin/console app:get-payments 1000 100` will download them in increments of 100. 
 
 Next, to index run `php bin/console app:index-payments`
 
