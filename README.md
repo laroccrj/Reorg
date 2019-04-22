@@ -32,4 +32,4 @@ Next, to index run `php bin/console app:index-payments`
 Now you should be able to load the website and make some searches!
 
 ## Major todo: 
-Plan on adding RabbitMQ so xls files can be generated asynchronously. 
+Plan on adding RabbitMQ so xls files can be generated asynchronously. Everything still works at the moment, just having a queue running is a lot better pattern than running a cli command during a request.
