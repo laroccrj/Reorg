@@ -56,7 +56,7 @@ class PaymentDataService
    * @throws \Doctrine\ORM\ORMException
    * @throws \Doctrine\ORM\OptimisticLockException
    */
-  public function getAndSavePayments(int $limit = 10, int $offset = 0): array
+  public function importAndSavePayments(int $limit = 10, int $offset = 0): array
   {
     $payments = $this->api->getDataSet(PaymentDataApiService::DATA_SET_2015, $limit, $offset);
     $updatedPayments = [];

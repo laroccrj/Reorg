@@ -16,6 +16,10 @@
                 {% endfor %}
             </template>
         </payment-search>
+        <search-exporter
+                value="{{ searchValue }}"
+                field="{{ searchField }}">
+        </search-exporter>
         <pagination
             total-pages={{ totalPages }}
             page={{ page }}

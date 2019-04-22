@@ -19,7 +19,13 @@
 
 ### PHP Storm
 /.idea
-###> symfony/webpack-encore-bundle ###
+###>
+
+### Exports Dir
+/public/exports
+###>
+
+symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
 npm-debug.log

@@ -54,7 +54,7 @@ class GetPaymentsCommand extends Command
 
     while ($count < $limit) {
       $output->writeln('Getting: ' . $batch . ' payments');
-      $this->paymentDataService->getAndSavePayments($batch, $count);
+      $this->paymentDataService->importAndSavePayments($batch, $count);
       $output->writeln('Synced ' . $batch . ' payments');
       $count += $batch;
     }

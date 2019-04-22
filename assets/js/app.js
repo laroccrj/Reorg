@@ -17,6 +17,7 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 import Vue from 'vue';
 import PaymentSearch from './components/PaymentSearch'
 import Pagination from './components/Pagination'
+import SearchExporter from './components/SearchExporter'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -29,6 +30,6 @@ Vue.use(VueAxios, axios);
 window.onload = function () {
   new Vue({
     el: '#app',
-    components: {PaymentSearch, Pagination}
+    components: {PaymentSearch, Pagination, SearchExporter}
   });
 }
