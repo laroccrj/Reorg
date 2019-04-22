@@ -41,7 +41,7 @@ class RecordSearchController extends AbstractController
     $searchField = $request->get('searchField', null);
     $searchValue = $request->get('searchValue', null);
     $limit = 50;
-    $offset = $limit * $page;
+    $offset = $limit * ($page - 1);
     $pageCount = 1;
 
     $fields = Payment::getPublicAttributes();
