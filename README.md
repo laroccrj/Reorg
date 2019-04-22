@@ -1,5 +1,5 @@
 # Reorg Case Study
-I used homestead to build this. I left all my configs set up with dbs and app ids just to save 
+I used homestead to host this. I left all my dbs and app ids in the configs just to save 
 you some set up time if you don't want to register a new app. If you do, it's located in `config/services.yaml`
 
 Requires a MySQL database, an Elasticsearch instance, and Node
