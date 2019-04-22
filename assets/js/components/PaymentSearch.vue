@@ -47,13 +47,13 @@
     },
     data: function () {
       return {
-        src: '/typeahead?searchField=' + this.searchField + '&searchValue=',
+        searchField: this.field,
+        src: '/typeahead?searchField=' + this.field + '&searchValue=',
         data: {},
         limit: 5,
         minChars: 2,
         selectFirst: false,
         queryParamName: '',
-        searchField: this.field,
         searchValue: this.value
       }
     },
