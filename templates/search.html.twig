@@ -1,25 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="text-center">
-        <payment-search>
+        <payment-search
+                value="{{ searchValue }}"
+                field="{{ searchField }}">
             <template slot="searchFields">
                 {% for field, val in fields %}
-                    <option value="{{ field }}">{{ field }}</option>
+                    <option
+                        {% if field == searchField %}
+                            selected
+                        {% endif %}
+                        value="{{ field }}">
+                        {{ field }}
+                    </option>
                 {% endfor %}
             </template>
         </payment-search>
+        <pagination
+            total-pages={{ totalPages }}
+            page={{ page }}
+            base-url="/?searchField={{ searchField }}&searchValue={{ searchValue }}">
+        </pagination>
         {% for id, payment in payments %}
             <h3>Record {{ payment.recordId }}</h3>
             <table>
                 {% for field, val in fields %}
-                    <tr>
-                        <td class="fieldCol">
-                            {{ field }}
-                        </td>
-                        <td class="valCol">
-                            {{ attribute(payment, field) }}
-                        </td>
-                    </tr>
+                    {% if attribute(payment, field) is not null %}
+                        <tr>
+                            <td class="fieldCol">
+                                {{ field }}
+                            </td>
+                            <td class="valCol">
+                                {{ attribute(payment, field) }}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </table>
         {% endfor %}

@@ -38,10 +38,11 @@ class PaymentDataIndexService
    * @param array $query
    * @param int   $limit
    * @param int   $offset
+   * @param int  $count
    *
    * @return int[]
    */
-  public function search($query = [], int $limit = 50, int $offset = 0)
+  public function search($query = [], int $limit = 50, int $offset = 0, &$count = 0)
   {
     $query = array_map('strtolower', $query);
 
@@ -50,15 +51,19 @@ class PaymentDataIndexService
       'type' => self::INDEX_TYPE_PAYMENTS,
       'body' => [
         "from" => $offset,
-        "size" => $limit,
         'query' => [
-          'prefix' => $query
+          'match_phrase_prefix' => $query
         ]
       ]
     ];
 
+    if ($limit > 0) {
+      $params['body']["size"] = $limit;
+    }
+
     $response = $this->elastic->search($params);
     $hits = array_column($response['hits']['hits'],'_id');
+    $count = $response['hits']['total'];
     return $hits;
   }
 

@@ -9,10 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Payment;
-use App\Service\PaymentDataApiService;
-use App\Service\PaymentDataIndexService;
 use App\Service\PaymentDataService;
-use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,21 +35,29 @@ class RecordSearchController extends AbstractController
     $searchValue = $request->get('searchValue', null);
     $limit = 50;
     $offset = $limit * $page;
+    $pageCount = 1;
 
     $fields = Payment::getPublicAttributes();
 
-    if (is_null($searchField) || is_null($searchValue)) {
-      $payments = $paymentDataService->getPayments($limit, $offset);
+    if (empty($searchField) || empty($searchValue)) {
+      $payments = $paymentDataService->getPayments($limit, $offset, $pageCount);
     } else {
       $payments = $paymentDataService->searchPayments(
-        [$searchField => $searchValue]
+        [$searchField => $searchValue],
+        $limit,
+        $offset,
+        $pageCount
       );
     }
 
     return $this->render('search.html.twig',
       [
         'payments' => $payments,
-        'fields' => $fields
+        'fields' => $fields,
+        'searchField' => $searchField,
+        'searchValue' => $searchValue,
+        'totalPages' => floor($pageCount / $limit),
+        'page' => $page
       ]
     );
   }

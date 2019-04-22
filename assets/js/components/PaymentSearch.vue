@@ -16,7 +16,7 @@
            @keydown.up="up"
            @keydown.enter="hit"
            @keydown.esc="reset"
-           @blur="reset"
+           @blur=""
            @input="update"/>
     </div>
 
@@ -37,18 +37,24 @@
   export default {
     extends: VueTypeahead,
     name: "PaymentSearch",
+    props: {
+      value: {
+        required: false
+      },
+      field: {
+        required: false
+      },
+    },
     data: function () {
       return {
-        searchField: 'change_type',
-        searchValue: '',
-        // The source url
-        // (required)
-        src: '/typeahead?searchField=change_type&searchValue=',
+        src: '/typeahead?searchField=' + this.searchField + '&searchValue=',
         data: {},
         limit: 5,
         minChars: 2,
         selectFirst: false,
-        queryParamName: ''
+        queryParamName: '',
+        searchField: this.field,
+        searchValue: this.value
       }
     },
     methods: {
@@ -76,6 +82,9 @@
       fieldChange () {
         this.src = '/typeahead?searchField=' + this.searchField + '&searchValue=';
       }
+    },
+    mounted : function(){
+      this.query = this.searchValue;
     }
   }
 </script>

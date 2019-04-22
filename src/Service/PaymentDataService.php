@@ -74,14 +74,23 @@ class PaymentDataService
    *
    * @return Payment[]
    */
-  public function getPayments(int $limit = 100, int $offset = 0): array
+  public function getPayments(int $limit = 100, int $offset = 0, &$count = 0): array
   {
+    $count = $this->paymentRepository->getCountOfPayments();
     return $this->paymentRepository->findBy([], null, $limit, $offset);
   }
 
-  public function searchPayments($query = [], $limit = 50, $offset = 0)
+  /**
+   * @param array $query
+   * @param int   $limit
+   * @param int   $offset
+   * @param int   $count
+   *
+   * @return Payment[]
+   */
+  public function searchPayments($query = [], $limit = 50, $offset = 0, &$count = 0)
   {
-    $paymentIds = $this->paymentDataIndexService->search($query, $limit, $offset);
+    $paymentIds = $this->paymentDataIndexService->search($query, $limit, $offset, $count);
     return $this->paymentRepository->findBy(['id' => $paymentIds]);
   }
 }
