@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\Payment;
+use App\Entity\PaymentSearchExportTask;
 use App\Repository\PaymentRepository;
 use App\Service\PaymentDataIndexService;
 use App\Service\PaymentDataService;
@@ -78,12 +79,7 @@ class GenerateSpreadsheetCommand extends Command
     $fileSystem->appendToFile($fullPath, $headers);
 
     $offset = 0;
-    $payments = $this->paymentDataService->searchPayments(
-      [$task->getSearchField() => $task->getSearchValue()],
-      $batchSize,
-      $offset,
-      $totalPayments
-    );
+    $payments = $this->getPaymentsForTask($task, $batchSize, $offset);
 
     do {
       $rows = '';
@@ -101,11 +97,7 @@ class GenerateSpreadsheetCommand extends Command
       }
 
       $offset += $batchSize;
-      $payments = $this->paymentDataService->searchPayments(
-        [$task->getSearchField() => $task->getSearchValue()],
-        $batchSize,
-        $offset
-      );
+      $payments = $this->getPaymentsForTask($task, $batchSize, $offset);
 
       $fileSystem->appendToFile($fullPath, $rows);
     } while (count($payments) > 0);
@@ -114,5 +106,29 @@ class GenerateSpreadsheetCommand extends Command
     $task->setComplete(true);
     $this->paymentSearchExportService->markTaskComplete($task, $fileName);
     $output->writeln('Export complete');
+  }
+
+  /**
+   * @param PaymentSearchExportTask $task
+   * @param                         $limit
+   * @param                         $offset
+   * @param                         $count
+   *
+   * @return Payment[]
+   */
+  private function getPaymentsForTask(PaymentSearchExportTask $task, $limit, $offset, &$count = 0)
+  {
+    if (!empty($task->getSearchField()) && !empty($task->getSearchValue())) {
+      $payments = $this->paymentDataService->searchPayments(
+        [$task->getSearchField() => $task->getSearchValue()],
+        $limit,
+        $offset,
+        $totalPayments
+      );
+    } else {
+      $payments = $this->paymentDataService->getPayments($limit, $offset, $count);
+    }
+
+    return $payments;
   }
 }

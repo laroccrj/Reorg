@@ -52,8 +52,8 @@ class IndexPaymentsCommand extends Command
     $output->writeln('Starting the Index');
 
     while (count($paymentIds = $this->paymentRepository->findPaymentsThatNeedToBeIndexed(1)) > 0) {
-      foreach ($paymentIds as $paymentId) {
-        $payment = $this->paymentRepository->find($paymentId); // move out of loop
+      $payments = $this->paymentRepository->findBy(['id' => $paymentIds]);
+      foreach ($payments as $payment) {
         $this->paymentDataIndexService->indexPayment($payment);
         $output->writeln('Payment ' . $payment->getId() . ' has been indexed');
       }
