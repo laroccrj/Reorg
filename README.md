@@ -30,6 +30,3 @@ You can add a second argument for batch size there incase you are loading a lot 
 Next, to index run `php bin/console app:index-payments`
 
 Now you should be able to load the website and make some searches!
-
-## Major todo: 
-Plan on adding RabbitMQ so xls files can be generated asynchronously. Everything still works at the moment, but having a queue running to generate those files is a lot better pattern than running a cli command during a request. All that is required is to get the queue running, the logic behind generating xls files are ready to be run async.

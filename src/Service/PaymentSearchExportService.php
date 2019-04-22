@@ -61,6 +61,9 @@ class PaymentSearchExportService
   }
 
   /**
+   * Starts a process and runs the excel creation in the background
+   * This should really be happening in a job queue
+   *
    * @param PaymentSearchExportTask $task
    */
   public function startExportTask(PaymentSearchExportTask $task) {
