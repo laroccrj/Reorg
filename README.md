@@ -31,5 +31,5 @@ Next, to index run `php bin/console app:index-payments`
 
 Now you should be able to load the website and make some searches!
 
-##Major todo: 
+## Major todo: 
 Plan on adding RabbitMQ so xls files can be generated asynchronously. 
