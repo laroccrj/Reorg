@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: rob
- * Date: 4/20/19
- * Time: 4:05 PM
+ * This service handles interactions with the payments API and DB
  */
 
 namespace App\Service;

@@ -61,14 +61,9 @@
       search() {
         window.location.href = "/?searchField=" + this.searchField + "&searchValue=" + this.query;
       },
-      // The callback function which is triggered when the user hits on an item
-      // (required)
       onHit (item) {
         window.location.href = "/?searchField=" + this.searchField + "&searchValue=" + item.name;
       },
-
-      // The callback function which is triggered when the response data are received
-      // (optional)
       prepareResponseData (data) {
         let items = [];
 

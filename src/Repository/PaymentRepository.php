@@ -23,6 +23,7 @@ class PaymentRepository extends ServiceEntityRepository
   /**
    * @param Payment $payment
    *
+   * @return Payment|mixed
    * @throws \Doctrine\ORM\ORMException
    * @throws \Doctrine\ORM\OptimisticLockException
    */
@@ -80,7 +81,10 @@ class PaymentRepository extends ServiceEntityRepository
     return $payment;
   }
 
-
+  /**
+   * @return mixed
+   * @throws \Doctrine\ORM\NonUniqueResultException
+   */
   public function getCountOfPayments()
   {
     return $this->createQueryBuilder('p')

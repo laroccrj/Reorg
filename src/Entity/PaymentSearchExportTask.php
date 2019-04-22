@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Entity that will hold information for a job exporting search results to an xls file
+ */
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

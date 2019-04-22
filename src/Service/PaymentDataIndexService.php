@@ -1,11 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: rob
- * Date: 4/20/19
- * Time: 8:03 PM
+ * Service to handle index / searching for payment records in Elastic
  */
-
 namespace App\Service;
 
 
@@ -69,6 +65,9 @@ class PaymentDataIndexService
 
   /**
    * @param Payment $payment
+   *
+   * @throws \Doctrine\ORM\ORMException
+   * @throws \Doctrine\ORM\OptimisticLockException
    */
   public function indexPayment(Payment $payment)
   {

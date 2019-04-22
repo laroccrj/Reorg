@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: rob
- * Date: 4/20/19
- * Time: 2:33 PM
+ * Service to make requests to the external API
  */
 
 namespace App\Service;

@@ -9,7 +9,6 @@
 namespace App\Controller;
 
 use App\Entity\Payment;
-use App\Entity\PaymentSearchExportTask;
 use App\Repository\PaymentSearchExportTaskRepository;
 use App\Service\PaymentDataService;
 use App\Service\PaymentSearchExportService;
@@ -31,6 +30,10 @@ class RecordSearchController extends AbstractController
 
   /**
    * @Route("/")
+   * @param Request            $request
+   * @param PaymentDataService $paymentDataService
+   *
+   * @return Response
    */
   public function index(Request $request, PaymentDataService $paymentDataService)
   {
@@ -67,7 +70,13 @@ class RecordSearchController extends AbstractController
   }
 
   /**
+   * Returns search results formatted for typeahead
+   *
    * @Route("/typeahead")
+   * @param Request            $request
+   * @param PaymentDataService $paymentDataService
+   *
+   * @return Response
    */
   public function typeahead(Request $request, PaymentDataService $paymentDataService)
   {
@@ -96,6 +105,8 @@ class RecordSearchController extends AbstractController
   }
 
   /**
+   * Kicks off an export task
+   *
    * @Route("/export")
    * @param Request                    $request
    * @param PaymentSearchExportService $paymentSearchExportService
@@ -119,6 +130,8 @@ class RecordSearchController extends AbstractController
   }
 
   /**
+   * Allows clients to poll the status of their export task
+   *
    * @Route("/export/status/{taskId}")
    * @param Request                           $request
    * @param PaymentSearchExportTaskRepository $paymentSearchExportTaskRepository
@@ -151,17 +164,17 @@ class RecordSearchController extends AbstractController
   }
 
   /**
+   * Downloads the task's xls file after it is done
+   *
    * @Route("/export/download/{taskId}")
    * @param Request                           $request
    * @param PaymentSearchExportTaskRepository $paymentSearchExportTaskRepository
-   * @param PaymentSearchExportService $paymentSearchExportService
    *
    * @return Response
    */
   public function downloadExportFile(
     Request $request,
-    PaymentSearchExportTaskRepository $paymentSearchExportTaskRepository,
-    PaymentSearchExportService $paymentSearchExportService
+    PaymentSearchExportTaskRepository $paymentSearchExportTaskRepository
   )
   {
     $taskId = $request->get('taskId', null);

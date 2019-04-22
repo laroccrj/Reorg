@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: rob
- * Date: 4/22/19
- * Time: 10:42 AM
+ * Service to handle exporting to xls files
  */
 
 namespace App\Service;

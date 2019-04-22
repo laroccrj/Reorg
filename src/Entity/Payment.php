@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Entity to save data received from the API
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
