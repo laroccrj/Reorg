@@ -45,6 +45,10 @@ class RecordSearchController extends AbstractController
     $pageCount = 1;
 
     $fields = Payment::getPublicAttributes();
+    array_walk($fields, function(&$item, $key){
+      $item = str_replace('_', ' ', $key);
+      $item = ucfirst($item);
+    });
 
     if (empty($searchField) || empty($searchValue)) {
       $payments = $paymentDataService->getPayments($limit, $offset, $pageCount);

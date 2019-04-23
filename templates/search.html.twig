@@ -1,38 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="text-center">
-        <payment-search
-                value="{{ searchValue }}"
-                field="{{ searchField }}">
-            <template slot="searchFields">
-                {% for field, val in fields %}
-                    <option
-                        {% if field == searchField %}
-                            selected
-                        {% endif %}
-                        value="{{ field }}">
-                        {{ field }}
-                    </option>
-                {% endfor %}
-            </template>
-        </payment-search>
-        <search-exporter
-                value="{{ searchValue }}"
-                field="{{ searchField }}">
-        </search-exporter>
-        <pagination
-            total-pages={{ totalPages }}
-            page={{ page }}
-            base-url="/?searchField={{ searchField }}&searchValue={{ searchValue }}">
-        </pagination>
+    <div class="text-center center">
+        <div>
+            <payment-search
+                    value="{{ searchValue }}"
+                    field="{{ searchField }}">
+                <template slot="searchFields">
+                    {% for field, display in fields %}
+                        <option
+                                {% if field == searchField %}
+                                    selected
+                                {% endif %}
+                                value="{{ field }}">
+                            {{ field }}
+                        </option>
+                    {% endfor %}
+                </template>
+            </payment-search>
+        </div>
+        <div>
+            <search-exporter
+                    value="{{ searchValue }}"
+                    field="{{ searchField }}">
+            </search-exporter>
+        </div>
+        <div class="center">
+            <pagination
+                    total-pages={{ totalPages }}
+                    page={{ page }}
+                    base-url="/?searchField={{ searchField }}&searchValue={{ searchValue }}">
+            </pagination>
+        </div>
         {% for id, payment in payments %}
             <h3>Record {{ payment.recordId }}</h3>
             <table>
-                {% for field, val in fields %}
+                {% for field, display in fields %}
                     {% if attribute(payment, field) is not null %}
                         <tr>
                             <td class="fieldCol">
-                                {{ field }}
+                                {{ display }}
                             </td>
                             <td class="valCol">
                                 {{ attribute(payment, field) }}

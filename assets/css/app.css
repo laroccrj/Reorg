@@ -1,5 +1,7 @@
 body {
-    background-color: lightgray;
+    background-color: white;
+    max-width: 800px;
+    margin: auto;
 }
 table {
     border: 1px solid black;
@@ -14,8 +16,29 @@ td {
     background-color: lightblue;
     font-weight: bold;
 }
-
-.typeaheadItem {
-    background-color: white;
-    border: 1px solid black;
+.center {
+    margin: auto;
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex_1-1 {
+    flex: 0 0 100%;
+}
+.flex_1-4 {
+    flex: 0 0 25%;
+}
+.flex_2-4 {
+    flex: 0 0 50%;
+}
+.flex_3-4 {
+    flex: 0 0 75%;
+}
+.flex_1-10 {
+    flex: 0 0 10%;
+}
+.flex_9-10 {
+    flex: 0 0 90%;
 }
